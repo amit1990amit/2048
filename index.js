@@ -4,6 +4,7 @@ var ctx = canvas.getContext('2d');
 var sizeInput = document.getElementById('size');
 var changeSize = document.getElementById('change-size');
 var scoreLabel = document.getElementById('score');
+var restartGame = document.getElementById('restart');
 var score = 0;
 var size = 4;
 var width = canvas.width / size - 6;
@@ -12,8 +13,16 @@ var fontSize;
 var loss = false;
 startGame();
 
+restartGame.onclick = function(){
+  score = 0;
+  scoreLabel.innerHTML = 'Score : ' + score;
+  startGame();
+}
+
 changeSize.onclick = function () {
-  if (sizeInput.value >= 2 && sizeInput.value <= 20) {
+  if (sizeInput.value >= 2 && sizeInput.value <= 10) {
+    score = 0;
+    scoreLabel.innerHTML = 'Score : ' + score;
     size = sizeInput.value;
     width = canvas.width / size - 6;
     console.log(sizeInput.value);
